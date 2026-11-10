@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Space Marine lore without the homework. A beginner-friendly guide to the original loyalist chapters and selected Second Founding successors.">
+<meta name="theme-color" content="#131916">
+<title>The Chapter Field Guide — Space Marines, Explained</title>
+<style>
+:root {
+  color-scheme: dark;
+  --bg: #131916;
+  --panel: #1b231e;
+  --paper: #eee9dc;
+  --muted: #b1b8ad;
+  --gold: #d7b875;
+  --line: #354036;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--paper);
+  font: 16px/1.7 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+a { color: var(--gold); text-underline-offset: 4px; }
+button, input, select { font: inherit; }
+button, select, summary { cursor: pointer; }
+button, a, input, select, summary { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 5px; }
+button, input, select { border-radius: 5px; }
+h1, h2, h3, p { margin-top: 0; }
+h1, h2, h3 { line-height: 1.12; }
+h1, h2 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; }
+h1 { font-size: clamp(3.3rem, 7.5vw, 6.5rem); letter-spacing: -.045em; margin-bottom: 25px; }
+h2 { font-size: clamp(2.1rem, 4vw, 3.3rem); letter-spacing: -.025em; margin-bottom: 20px; }
+h3 { font-size: 1.3rem; }
+p { margin-bottom: 18px; }
+.container { width: min(1160px, calc(100% - 48px)); margin: auto; }
+.muted { color: var(--muted); }
+.eyebrow {
+  color: var(--gold);
+  font-size: .73rem;
+  font-weight: 750;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.skip {
+  position: fixed; top: -100px; left: 16px; z-index: 100;
+  background: var(--paper); color: var(--bg); padding: 12px;
+}
+.skip:focus { top: 12px; }
+header {
+  position: sticky; top: 0; z-index: 10;
+  background: #131916f5;
+  border-bottom: 1px solid var(--line);
+}
+.header-inner {
+  min-height: 78px; display: flex;
+  align-items: center; justify-content: space-between; gap: 22px;
+}
+.brand {
+  display: flex; align-items: center; gap: 12px;
+  font-weight: 800; letter-spacing: .09em; font-size: .78rem;
+  text-decoration: none; color: var(--paper); white-space: nowrap;
+}
+.brand-mark {
+  display: grid; place-items: center; width: 33px; height: 40px;
+  border: 1px solid var(--gold); border-radius: 3px 3px 14px 14px;
+  color: var(--gold); font: 24px Georgia, serif;
+}
+nav { display: flex; gap: 25px; }
+nav a { font-size: .85rem; color: var(--muted); text-decoration: none; }
+nav a:hover { color: var(--paper); }
+.hero {
+  display: grid; grid-template-columns: 1.2fr 1fr;
+  gap: 60px; align-items: center; padding: 86px 0 72px;
+}
+.hero em { color: var(--gold); font-style: normal; }
+.hero-copy { font-size: 1.08rem; color: var(--muted); max-width: 540px; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 29px; }
+.button {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 47px; padding: 11px 20px; border: 1px solid var(--gold);
+  background: var(--gold); color: #171d17; text-decoration: none;
+  font-size: .87rem; font-weight: 750; border-radius: 4px;
+}
+.button.secondary { background: transparent; color: var(--paper); border-color: var(--line); }
+.button:hover { filter: brightness(1.1); }
+.hero-art {
+  position: relative; padding: 24px;
+  background: radial-gradient(ellipse at center, #344233 0%, #1b241c 55%, #18201a 80%);
+  border: 1px solid #4b5540;
+  border-radius: 140px 140px 6px 6px;
+  text-align: center; overflow: hidden;
+}
+.hero-art::before {
+  content: ""; position: absolute; inset: 14px;
+  border: 1px solid #d7b87533; border-radius: inherit; pointer-events: none;
+}
+.hero-art svg { width: 100%; max-height: 340px; display: block; margin: 24px 0 16px; }
+.hero-art .eyebrow { font-size: .65rem; }
+.art-caption { margin: 0; font: 1.5rem Georgia, serif; }
+.art-small { color: var(--muted); font-size: .76rem; margin: 7px 0 13px; }
+.route {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+}
+.route a {
+  display: flex; gap: 14px; align-items: center;
+  padding: 22px 12px; text-decoration: none; color: var(--paper);
+}
+.route a + a { border-left: 1px solid var(--line); padding-left: 25px; }
+.route b { color: var(--gold); font: 1.5rem Georgia, serif; }
+.route span { font-size: .88rem; }
+section { padding: 80px 0; border-bottom: 1px solid var(--line); }
+.section-intro { max-width: 680px; color: var(--muted); }
+.basics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin: 34px 0; }
+.basic { padding-top: 24px; border-top: 2px solid var(--gold); }
+.basic p { color: var(--muted); font-size: .94rem; }
+.note {
+  padding: 20px 24px; border-left: 3px solid var(--gold);
+  background: #d7b8750b; color: #d9dbcF; font-size: .92rem;
+}
+.note p:last-child { margin-bottom: 0; }
+.timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; margin: 38px 0; }
+.timeline article { border-top: 1px solid var(--gold); padding-top: 24px; }
+.timeline h3 { margin: 12px 0; }
+.timeline p { font-size: .91rem; color: var(--muted); }
+.family {
+  background: var(--panel); border: 1px solid var(--line);
+  padding: 28px; margin-top: 34px; text-align: center;
+}
+.family-parent { font: 1.55rem Georgia, serif; margin: 10px 0; }
+.branches { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+.branches div { padding: 16px; border: 1px solid var(--line); background: var(--bg); }
+.branches strong { display: block; }
+.branches small { color: var(--muted); }
+.section-heading { display: flex; align-items: end; justify-content: space-between; gap: 25px; }
+.section-heading h2 { margin-bottom: 12px; }
+.filters {
+  display: grid; grid-template-columns: 1fr 230px auto;
+  gap: 15px; align-items: end; margin: 30px 0 12px;
+}
+label { display: block; color: var(--muted); font-size: .8rem; margin-bottom: 7px; }
+input, select {
+  width: 100%; min-height: 48px; border: 1px solid #55604f;
+  padding: 11px 13px; background: #1a221c; color: var(--paper);
+}
+input::placeholder { color: #9ca696; }
+#result-count { font-size: .82rem; color: var(--muted); margin: 18px 0; }
+.chapter-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: start; }
+.chapter {
+  --accent: var(--gold);
+  background: var(--panel); border: 1px solid var(--line);
+  border-top: 3px solid var(--accent); padding: 25px;
+}
+.chapter-meta { display: flex; justify-content: space-between; gap: 10px; align-items: center; margin-bottom: 25px; }
+.chapter-badge {
+  width: 38px; height: 42px; display: grid; place-items: center;
+  border: 1px solid var(--accent); border-radius: 3px 3px 15px 15px;
+  color: var(--accent); font: 1.1rem Georgia, serif;
+}
+.chapter-meta small { color: var(--muted); font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; }
+.chapter h3 { font: 1.7rem/1.15 Georgia, serif; margin-bottom: 11px; }
+.chapter .tag { color: var(--accent); font-size: .75rem; font-weight: 750; }
+.chapter .one-line { min-height: 53px; font-size: .94rem; color: #d5dacf; margin: 13px 0 22px; }
+details { border-top: 1px solid var(--line); }
+summary { padding: 15px 0; font-weight: 650; font-size: .88rem; }
+summary:hover { color: var(--gold); }
+.chapter details p { font-size: .92rem; color: var(--muted); }
+.chapter dl { font-size: .82rem; margin: 20px 0; }
+.chapter dt { color: var(--muted); margin-top: 12px; }
+.chapter dd { margin: 2px 0 0; color: var(--paper); }
+.chapter details a { font-size: .8rem; }
+.empty { padding: 35px; border: 1px dashed var(--line); text-align: center; }
+.empty[hidden] { display: none; }
+.glossary { display: grid; grid-template-columns: 1fr 1fr; gap: 0 45px; margin-top: 30px; }
+.glossary details p, .faq details p { color: var(--muted); max-width: 800px; font-size: .94rem; }
+.faq { margin-top: 35px; }
+.sources { display: grid; grid-template-columns: 1fr 1fr; gap: 35px; }
+.sources ul { padding-left: 20px; }
+.sources li { margin-bottom: 12px; }
+.sources p, .sources li { font-size: .91rem; color: var(--muted); }
+footer { padding: 30px 0; color: var(--muted); font-size: .78rem; }
+.footer-inner { display: flex; justify-content: space-between; gap: 25px; }
+footer p { max-width: 780px; margin: 0; }
+noscript p { padding: 25px; border: 1px solid var(--gold); }
+@media (max-width: 950px) {
+  .hero { gap: 30px; }
+  .chapter-grid { grid-template-columns: repeat(2, 1fr); }
+  .timeline { grid-template-columns: repeat(2, 1fr); }
+  nav { gap: 15px; }
+}
+@media (max-width: 680px) {
+  html { scroll-padding-top: 140px; }
+  .container { width: calc(100% - 32px); }
+  .header-inner { align-items: start; flex-direction: column; gap: 13px; padding: 15px 0; }
+  nav { width: 100%; justify-content: space-between; gap: 8px; }
+  nav a { font-size: .77rem; }
+  .hero { grid-template-columns: 1fr; padding: 45px 0; gap: 35px; }
+  .hero-art { max-width: 390px; width: 100%; justify-self: center; }
+  .hero-art svg { max-height: 230px; }
+  .route { grid-template-columns: 1fr; }
+  .route a { padding: 15px 8px; }
+  .route a + a { border-left: 0; border-top: 1px solid var(--line); padding-left: 8px; }
+  section { padding: 55px 0; }
+  .basics, .chapter-grid, .branches, .glossary, .sources { grid-template-columns: 1fr; }
+  .basics { gap: 10px; }
+  .filters { grid-template-columns: 1fr 1fr; }
+  .filters > div:first-child { grid-column: 1 / -1; }
+  .section-heading { align-items: start; flex-direction: column; gap: 5px; }
+  .timeline { gap: 20px; }
+  .family { padding: 20px; }
+  .footer-inner { flex-direction: column; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+@media print {
+  body { background: white; color: black; }
+  header { position: static; background: white; }
+  nav, .filters, .hero-art, .actions, .route { display: none; }
+  .hero { display: block; padding: 20px 0; }
+  section { padding: 25px 0; }
+  .chapter, .note, .family, .branches div { background: white; color: black; break-inside: avoid; }
+  p, .muted, .chapter p, .chapter dt, .chapter dd { color: black !important; }
+  a { color: black; }
+}
+</style>
+</head>
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
+
+<header>
+  <div class="container header-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true">Ⅰ</span>
+      THE CHAPTER FIELD GUIDE
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="#basics">The basics</a>
+      <a href="#foundings">Foundings</a>
+      <a href="#chapters">Chapters</a>
+      <a href="#glossary">Glossary</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="container">
+  <div class="hero">
+    <div>
+      <p class="eyebrow">Warhammer 40,000 · A beginner's companion</p>
+      <h1>Big armour.<br>Bigger history.<br><em>Start here.</em></h1>
+      <p class="hero-copy">
+        Space Marine lore can feel like arriving halfway through a very long movie.
+        Let's meet the main chapters, untangle their family tree, and translate
+        the strange words along the way.
+      </p>
+      <div class="actions">
+        <a class="button" href="#basics">Teach me the basics →</a>
+        <a class="button secondary" href="#chapters">Meet the chapters</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <span class="eyebrow">Field note 001 · The armoured warrior</span>
+      <svg viewBox="0 0 400 340" aria-hidden="true">
+        <g fill="none" stroke="#bda875" stroke-width="1" opacity=".35">
+          <circle cx="200" cy="155" r="130"/>
+          <circle cx="200" cy="155" r="112"/>
+          <path d="M200 10v25M200 275v25M45 155h25M330 155h25"/>
+        </g>
+        <path d="M35 320v-61q2-49 69-62l54 24h84l54-24q67 13 69 62v61"
+              fill="#25382f" stroke="#8a9677" stroke-width="3"/>
+        <path d="M41 265q7-52 68-59l31 31-21 83H35M359 265q-7-52-68-59l-31 31 21 83h84"
+              fill="#33493d" stroke="#a99869" stroke-width="4"/>
+        <path d="M119 320l12-86 69-25 69 25 12 86"
+              fill="#23332b" stroke="#8a9677" stroke-width="3"/>
+        <path d="M129 106q1-63 71-65 70 2 71 65v79l-27 39-44 20-44-20-27-39z"
+              fill="#465b49" stroke="#b8b595" stroke-width="3"/>
+        <path d="M182 44h36l-6 91h-24z" fill="#c5ae76"/>
+        <path d="M136 127l49 10-10 22-34-11zM264 127l-49 10 10 22 34-11z"
+              fill="#d79a6d" stroke="#17251d" stroke-width="6"/>
+        <path d="M183 149h34l17 64-34 14-34-14z"
+              fill="#25362e" stroke="#b8b595" stroke-width="3"/>
+        <path d="M188 169v38m12-43v47m12-42v38" stroke="#a5a88b" stroke-width="4"/>
+        <path d="M131 171h26v32h-20M269 171h-26v32h20"
+              fill="#26352d" stroke="#9ca58a" stroke-width="3"/>
+        <path d="M159 274h82m-70 10h58m-45 10h32"
+              stroke="#c5ae76" stroke-width="5"/>
+      </svg>
+      <p class="art-caption">One shared origin.<br>Many different identities.</p>
+      <p class="art-small">Original illustration · Not a specific chapter</p>
+    </div>
+  </div>
+
+  <div class="route" aria-label="Suggested reading order">
+    <a href="#basics"><b>01</b><span>Understand the setting</span></a>
+    <a href="#foundings"><b>02</b><span>Untangle the family tree</span></a>
+    <a href="#chapters"><b>03</b><span>Find a chapter that interests you</span></a>
+  </div>
+
+  <section id="basics">
+    <p class="eyebrow">01 / No previous knowledge needed</p>
+    <h2>So… what is a Space Marine?</h2>
+    <p class="section-intro">
+      A human transformed into a superhuman soldier through implanted organs,
+      intense training, and conditioning. Add a powered suit of armour and
+      extremely destructive weapons, and you have one of humanity's elite warriors.
+    </p>
+    <div class="basics">
+      <article class="basic">
+        <h3>The world they live in</h3>
+        <p>
+          Warhammer 40,000 is a dark science-fiction setting in the far future.
+          Humanity's vast empire, the <strong>Imperium</strong>, is threatened by
+          aliens, rebellion, and supernatural powers called Chaos.
+        </p>
+      </article>
+      <article class="basic">
+        <h3>The group they belong to</h3>
+        <p>
+          A <strong>Chapter</strong> is an independent Space Marine brotherhood
+          with its own leaders, traditions, colours, and equipment.
+          Many follow a model of roughly 1,000 fighting Marines,
+          although there are exceptions and supporting personnel.
+        </p>
+      </article>
+      <article class="basic">
+        <h3>What makes them different</h3>
+        <p>
+          Chapters share much of the same technology, but have different
+          personalities. One prizes careful planning; another prefers
+          lightning attacks. Think military orders with distinct cultures,
+          rather than different species.
+        </p>
+      </article>
+    </div>
+    <aside class="note">
+      <p>
+        <strong>Are they the good guys?</strong> They are often the heroes of
+        their own stories, but they serve a cruel, authoritarian empire.
+        “Loyalist” means loyal to the Emperor and Imperium; it does not
+        automatically mean morally good.
+      </p>
+    </aside>
+  </section>
+
+  <section id="foundings">
+    <p class="eyebrow">02 / The family tree</p>
+    <h2>First. Second. What does “Founding” mean?</h2>
+    <p class="section-intro">
+      A Founding is an occasion when new Space Marine forces are created.
+      It tells you about their origins, not their strength or rank.
+      The first two explain most of the family tree you need to start with.
+    </p>
+
+    <div class="timeline">
+      <article>
+        <span class="eyebrow">01 · The origins</span>
+        <h3>First Founding</h3>
+        <p>
+          The Emperor creates the original <strong>Legions</strong>:
+          enormous Space Marine armies. Each has a genetic connection
+          to a superhuman leader called a <strong>Primarch</strong>.
+        </p>
+      </article>
+      <article>
+        <span class="eyebrow">02 · The great split</span>
+        <h3>The Horus Heresy</h3>
+        <p>
+          Around 10,000 years before the main 40K setting, Horus leads
+          a devastating civil war. Of the 18 Legions active in this era,
+          nine side with him and nine remain loyal.
+        </p>
+      </article>
+      <article>
+        <span class="eyebrow">03 · The reorganisation</span>
+        <h3>Second Founding</h3>
+        <p>
+          After the war, most loyal Legions divide into smaller,
+          independent Chapters. A Chapter keeps the old Legion's name;
+          other branches take new names as <strong>successors</strong>.
+        </p>
+      </article>
+      <article>
+        <span class="eyebrow">04 · The setting today</span>
+        <h3>Warhammer 40,000</h3>
+        <p>
+          Many more Foundings follow over the millennia.
+          This guide stays with the nine original loyalist Chapter
+          identities and a small selection of Second Founding successors.
+        </p>
+      </article>
+    </div>
+
+    <aside class="note">
+      <p>
+        <strong>The important distinction:</strong> the original forces were
+        Legions. “First Founding Chapters” is the usual name for the Chapters
+        that carry on those original loyalist names and traditions.
+        A successor is its own organisation, not simply a squad in its parent Chapter.
+      </p>
+    </aside>
+
+    <div class="family">
+      <span class="eyebrow">One example</span>
+      <p class="family-parent">Imperial Fists Legion</p>
+      <span class="muted">↓ divided into Chapters after the Heresy ↓</span>
+      <div class="branches">
+        <div><strong>Imperial Fists</strong><small>Continues the original identity</small></div>
+        <div><strong>Black Templars</strong><small>Second Founding successor</small></div>
+        <div><strong>Crimson Fists</strong><small>Second Founding successor</small></div>
+      </div>
+      <p class="muted" style="font-size:.8rem;margin-bottom:0">
+        A simplified example, not a complete list of Imperial Fists successors.
+      </p>
+    </div>
+  </section>
+
+  <section id="chapters">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">03 / Meet the brotherhoods</p>
+        <h2>Same armour. Different outlook.</h2>
+      </div>
+      <span class="muted" style="font-size:.8rem">9 original loyalist Chapters · 6 selected successors</span>
+    </div>
+    <p class="section-intro">
+      Start with the original nine. Read the one-line descriptions, then open
+      any profile that catches your eye. The fighting styles describe their
+      lore; every Chapter can use a variety of tactics.
+    </p>
+
+    <form class="filters" id="filters" role="search" aria-label="Search chapter profiles">
+      <div>
+        <label for="search">Find a chapter, ancestor, or theme</label>
+        <input id="search" type="search" placeholder="Try stealth, Vulkan, or Blood Angels…" autocomplete="off">
+      </div>
+      <div>
+        <label for="founding">Which Founding?</label>
+        <select id="founding">
+          <option value="1">First Founding · 9</option>
+          <option value="2">Second Founding · 6 selected</option>
+          <option value="all">All 15 chapters</option>
+        </select>
+      </div>
+      <button class="button secondary" type="button" id="reset">Reset</button>
+    </form>
+    <p id="result-count" role="status" aria-live="polite" aria-atomic="true"></p>
+    <div id="chapter-grid" class="chapter-grid"></div>
+    <div id="empty" class="empty" hidden>
+      <h3>No matching chapters</h3>
+      <p class="muted">Try a shorter search or choose “All 15 chapters”.</p>
+      <button class="button secondary" type="button" id="show-all">Clear search and show all</button>
+    </div>
+    <noscript>
+      <p>
+        Enable JavaScript to use the chapter explorer. The basics, timeline,
+        glossary, and source links still work without it.
+        You can also browse the
+        <a href="https://wh40k.lexicanum.com/wiki/Founding">founding reference</a>.
+      </p>
+    </noscript>
+    <p class="muted" style="font-size:.82rem;margin-top:24px">
+      Second Founding entries are a beginner's selection, not an exhaustive catalogue.
+      The Salamanders have no recorded Second Founding successors.
+      The Space Wolves' Second Founding offshoot, the Wolf Brothers, did not survive as a lasting Chapter.
+    </p>
+  </section>
+
+  <section id="glossary">
+    <p class="eyebrow">04 / Translate the jargon</p>
+    <h2>You don't need to speak High Gothic.</h2>
+    <p class="section-intro">Open a term for the plain-English version.</p>
+    <div class="glossary">
+      <details>
+        <summary>Adeptus Astartes</summary>
+        <p>The formal name for Space Marines. In most conversations, the two terms mean the same thing.</p>
+      </details>
+      <details>
+        <summary>Emperor of Mankind</summary>
+        <p>The immensely powerful founder of the Imperium. In the main 40K setting, he is sustained on the Golden Throne and worshipped by much of humanity.</p>
+      </details>
+      <details>
+        <summary>Primarch</summary>
+        <p>One of the Emperor's superhuman creations, each associated with an original Legion. A Primarch is a Chapter's genetic ancestor, not its ordinary commanding officer.</p>
+      </details>
+      <details>
+        <summary>Gene-seed</summary>
+        <p>The biological material used to grow the special organs that help make a Space Marine. It connects a Chapter to its genetic lineage and can pass on unusual traits.</p>
+      </details>
+      <details>
+        <summary>Legion / Chapter / Company</summary>
+        <p>A Legion was a vast army from the earlier era. A Chapter is a smaller, independent brotherhood. A Company is a unit inside a Chapter, often around 100 Marines in the standard model.</p>
+      </details>
+      <details>
+        <summary>Codex Astartes</summary>
+        <p>Roboute Guilliman's guide to military organisation and warfare. Some Chapters follow it closely; others adapt it or depart from it substantially.</p>
+      </details>
+      <details>
+        <summary>Successor Chapter</summary>
+        <p>A Chapter descended from an older Space Marine lineage. It inherits genetic ancestry, but develops its own leadership, traditions, and history.</p>
+      </details>
+      <details>
+        <summary>Chaos / the Warp</summary>
+        <p>The Warp is a supernatural dimension connected to thoughts and emotions. Chaos refers to its destructive gods, daemons, and corrupting powers. The two words are related, but are not exact synonyms.</p>
+      </details>
+      <details>
+        <summary>Firstborn / Primaris</summary>
+        <p>Firstborn are Marines made using the older enhancement process. Primaris are a later development with additional enhancements. These terms describe types of Marine, not which Founding their Chapter belongs to.</p>
+      </details>
+      <details>
+        <summary>Bolter / power armour</summary>
+        <p>A bolter fires powerful explosive projectiles. Power armour is a powered protective suit that supports and enhances its wearer's movements.</p>
+      </details>
+      <details>
+        <summary>Chapter Master</summary>
+        <p>The leader of a Chapter. Some Chapters use different titles or leadership arrangements. A Chapter Master is still a Space Marine, rather than a Primarch.</p>
+      </details>
+      <details>
+        <summary>Librarian / Chaplain / Apothecary</summary>
+        <p>A Librarian is a psychic specialist. A Chaplain guides the Chapter's beliefs and morale. An Apothecary is a battlefield medic who also safeguards gene-seed.</p>
+      </details>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">05 / Things everyone wonders at first</p>
+    <h2>A few useful answers.</h2>
+    <div class="faq">
+      <details>
+        <summary>Were there only nine original Legions?</summary>
+        <p>
+          No. Twenty were originally created. Two were erased from Imperial records,
+          leaving 18 active at the time of the Heresy. Nine became traitors and
+          nine remained loyal. This guide focuses on the nine loyalist lineages.
+        </p>
+      </details>
+      <details>
+        <summary>Is a Second Founding Chapter weaker or less important?</summary>
+        <p>
+          No. “Second” describes its origin, not a lower rank.
+          The Black Templars, for example, are a major force with a very distinct identity.
+        </p>
+      </details>
+      <details>
+        <summary>Are the Grey Knights and Deathwatch missing?</summary>
+        <p>
+          They sit outside this guide's simple family-tree approach.
+          The Grey Knights are a secretive force specialising in fighting daemons.
+          The Deathwatch brings Marines from many Chapters together to fight alien threats.
+          Neither is a straightforward example of the successor relationships introduced here.
+        </p>
+      </details>
+      <details>
+        <summary>Do I need to read the Horus Heresy first?</summary>
+        <p>
+          No. Knowing that a huge civil war split the Space Marines is enough to begin.
+          Learn one Chapter that interests you, then explore its stories.
+          You can return to the Heresy when you want the deeper background.
+        </p>
+      </details>
+      <details>
+        <summary>Does a Chapter's favourite tactic define everything it can do?</summary>
+        <p>
+          No. These are memorable tendencies, not absolute restrictions.
+          Raven Guard can fight open battles, White Scars use more than bikes,
+          and Ultramarines can improvise. Individual characters also vary.
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <section>
+    <div class="sources">
+      <div>
+        <p class="eyebrow">Keep exploring</p>
+        <h2>A starting point, not an exam.</h2>
+        <p>
+          If you can explain what a Chapter is, recognise the original nine,
+          and understand how successors branch off, you have the foundations.
+          Pick a favourite and follow your curiosity.
+        </p>
+        <a class="button secondary" href="#chapters">Back to the chapters ↑</a>
+      </div>
+      <div>
+        <h3>Sources & further reading</h3>
+        <p>
+          Summaries are written in plain English and deliberately leave out
+          many exceptions. Chapter profiles link to their own references.
+          Older articles may contain outdated game rules; this guide covers lore.
+        </p>
+        <ul>
+          <li><a href="https://www.warhammer-community.com/en-gb/articles/cDcDzjwu/starting-a-space-marine-army-in-warhammer-40000-everything-you-need-to-know-from-painting-to-lore/">Official introduction to Space Marines</a></li>
+          <li><a href="https://www.warhammer-community.com/en-gb/articles/B9Brx0ey/first-founding-the-new-deluxe-edition-is-the-ultimate-space-marine-lore-book/">Official overview of First Founding</a></li>
+          <li><a href="https://wh40k.lexicanum.com/wiki/Founding">Lexicanum: Foundings and successor lineages</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <p>
+      The Chapter Field Guide · An unofficial fan guide.
+      Warhammer 40,000 and its fictional setting belong to Games Workshop.
+      No affiliation or endorsement.
+    </p>
+    <a href="#top">Back to top ↑</a>
+  </div>
+</footer>
+
+<script>
+"use strict";
+
+// Name, founding, Primarch/parent, armour, accent, theme, short description, lore.
+const chapters = [
+  ["Ultramarines",1,"Roboute Guilliman","Blue and gold","#7caaff","Strategy",
+   "The adaptable planners.",
+   "They value discipline, teamwork, and careful planning. Their Primarch wrote the Codex Astartes: a guide to organising Space Marines and fighting wars. Think organised all-rounders with a Roman-inspired look, rather than warriors limited to one trick."],
+
+  ["Dark Angels",1,"Lion El'Jonson","Dark green; specialist units use bone or black","#81b89a","Knights",
+   "Secretive knights with unfinished business.",
+   "A split within their Legion left a shameful legacy: the Fallen. Hunting these scattered warriors shaped the Chapter for millennia. Their Deathwing are heavily armoured veterans; their Ravenwing are fast hunters. The full story of the Fallen is more complicated than simply calling all of them evil."],
+
+  ["White Scars",1,"Jaghatai Khan","White and red","#e2ded1","Speed",
+   "Strike fast. Keep moving.",
+   "They favour speed, encirclement, and choosing where a fight happens. Bikes are iconic, but they are a complete army, not just a motorcycle club. Their culture draws on the steppe warriors of their homeworld, Chogoris, and includes poetry and craftsmanship."],
+
+  ["Space Wolves",1,"Leman Russ","Blue-grey, often with yellow","#acbfd1","Assault",
+   "Saga-loving warriors with a fierce independent streak.",
+   "Their culture evokes Norse legends: great deeds, pack loyalty, and warrior heroes. They favour aggressive fighting and organise themselves into Great Companies instead of following the usual Chapter structure. Their genetic inheritance can also cause a dangerous wolf-like transformation."],
+
+  ["Imperial Fists",1,"Rogal Dorn","Yellow","#e8c15b","Defence",
+   "The wall that refuses to fall.",
+   "They excel at defending fortresses and breaking enemy strongholds. Patience, duty, and stubborn endurance define their identity. Their Legion helped defend the Emperor's palace during the Horus Heresy. They are the shared ancestors of both the Black Templars and Crimson Fists."],
+
+  ["Blood Angels",1,"Sanguinius","Red, with gold and black details","#f0908e","Assault",
+   "Noble artists fighting an inner monster.",
+   "They prize beauty and honour while excelling at close combat and jump-pack assaults. They struggle with the Red Thirst, a craving for blood, and the Black Rage, which makes a Marine experience his Primarch's death as if it were happening to him. Those are two different afflictions."],
+
+  ["Iron Hands",1,"Ferrus Manus","Black and silver","#b9c2c5","Machines",
+   "Warriors who put their trust in metal.",
+   "They replace parts of their bodies with machinery and favour armoured firepower. The loss of their Primarch intensified their contempt for weakness. Think cyborg soldiers whose search for strength can come at the expense of compassion."],
+
+  ["Salamanders",1,"Vulkan","Green and black","#9bc879","Protection",
+   "Craftsmen who remember the people behind the war.",
+   "They are known for protecting ordinary humans, forging their own equipment, and using flame and heat-based weapons. Their volcanic homeworld is Nocturne. Their compassion stands out among Space Marines, although they still serve the brutal Imperium and wage ruthless wars."],
+
+  ["Raven Guard",1,"Corvus Corax","Black and white","#c2becf","Stealth",
+   "Win by striking where no one expects.",
+   "They favour infiltration, ambushes, and attacks on vulnerable targets. Their Legion suffered catastrophic losses during the Heresy, making careful use of limited forces especially important. Think armoured commandos: they can fight openly, but prefer to set the terms first."],
+
+  ["Black Templars",2,"Imperial Fists","Black and white","#e1d0ae","Knights",
+   "Crusading knights with unwavering religious zeal.",
+   "Founded under Sigismund, they pursue a continuing crusade in the Emperor's name and worship him as a god. They favour close combat and organise into crusading forces. They do not follow the usual thousand-warrior Chapter model. Shared ancestry with the Imperial Fists does not mean identical beliefs."],
+
+  ["Crimson Fists",2,"Imperial Fists","Dark blue with red gauntlets","#e49a9d","Defence",
+   "Battered defenders who keep getting back up.",
+   "An Ork invasion of Rynn's World nearly destroyed them. Their stories often centre on endurance, rebuilding, and holding out against overwhelming odds. They are particularly experienced at fighting Orks: the setting's aggressive, green-skinned alien warriors."],
+
+  ["Flesh Tearers",2,"Blood Angels","Dark red and black","#e48b83","Assault",
+   "The Blood Angels' inner struggle turned up.",
+   "They are ferocious close-combat fighters and suffer severely from their inherited bloodlust and Black Rage. Their central tension is remaining loyal while controlling violence that can endanger allies as well as enemies. Their name is an excellent warning of their reputation."],
+
+  ["Novamarines",2,"Ultramarines","Quartered blue and bone","#9caee0","Strategy",
+   "A different banner for a familiar tradition.",
+   "They closely honour the Codex Astartes and their Ultramarines ancestry while maintaining their own identity and customs. Their blue-and-bone armour is divided into quarters. They show how a successor can preserve its parent's broad approach without being the same organisation."],
+
+  ["Angels of Absolution",2,"Dark Angels","Bone white","#d6c69d","Knights",
+   "The secretive knightly family, with less inherited guilt.",
+   "They share the Dark Angels' heritage and cooperate in hunting the Fallen. Unlike many of their relatives, they believe their loyal ancestors already absolved them of the old betrayal. They still see bringing the Fallen to account as their responsibility."],
+
+  ["Raptors",2,"Raven Guard","Olive green and camouflage","#a7bc8a","Stealth",
+   "Practical commandos who adapt to the battlefield.",
+   "They emphasise reconnaissance, marksmanship, camouflage, and flexible tactics. They are a useful example of Raven Guard stealth traditions taking a distinct form. These loyalist Raptors are a Chapter; Chaos Raptors are a different group with a similar name."]
+];
+
+const grid = document.querySelector("#chapter-grid");
+const search = document.querySelector("#search");
+const founding = document.querySelector("#founding");
+const count = document.querySelector("#result-count");
+const empty = document.querySelector("#empty");
+
+function element(tag, text, className) {
+  const node = document.createElement(tag);
+  if (text !== undefined) node.textContent = text;
+  if (className) node.className = className;
+  return node;
+}
+
+function addFact(list, label, value) {
+  list.append(element("dt", label), element("dd", value));
+}
+
+function createCard(chapter) {
+  const [name, number, ancestry, armour, accent, theme, short, lore] = chapter;
+  const article = element("article", undefined, "chapter");
+  article.style.setProperty("--accent", accent);
+
+  const meta = element("div", undefined, "chapter-meta");
+  const badge = element("span", number === 1 ? "I" : "II", "chapter-badge");
+  badge.setAttribute("aria-hidden", "true");
+  meta.append(
+    badge,
+    element("small", number === 1 ? "First Founding" : "Second Founding")
+  );
+
+  const heading = element("h3", name);
+  const details = element("details");
+  const summary = element("summary", "Read the lore");
+  summary.setAttribute("aria-label", "Read the lore of the " + name);
+
+  const facts = element("dl");
+  addFact(facts, number === 1 ? "Primarch · genetic ancestor" : "Parent lineage", ancestry);
+  if (number === 2) {
+    const parent = chapters.find(c => c[0] === ancestry && c[1] === 1);
+    if (parent) addFact(facts, "Primarch · inherited lineage", parent[2]);
+  }
+  addFact(facts, "Recognisable armour colours", armour);
+
+  const reference = element("a", "Lore reference: " + name + " ↗");
+  const page = name === "Raptors" ? "Raptors_(Chapter)" : name.replaceAll(" ", "_");
+  reference.href = "https://wh40k.lexicanum.com/wiki/" + encodeURIComponent(page);
+
+  details.append(summary, element("p", lore), facts, reference);
+  article.append(
+    meta,
+    heading,
+    element("span", theme, "tag"),
+    element("p", short, "one-line"),
+    details
+  );
+  return article;
+}
+
+// Keep card nodes so opened profiles retain their state during filtering.
+const cards = chapters.map(createCard);
+
+function render() {
+  const query = search.value.trim().toLowerCase();
+  const selected = founding.value;
+  const fragment = document.createDocumentFragment();
+  let visible = 0;
+
+  chapters.forEach((chapter, index) => {
+    const matchesFounding = selected === "all" || String(chapter[1]) === selected;
+    const matchesQuery = chapter.join(" ").toLowerCase().includes(query);
+    if (matchesFounding && matchesQuery) {
+      fragment.append(cards[index]);
+      visible++;
+    }
+  });
+
+  grid.replaceChildren(fragment);
+  count.textContent = "Showing " + visible + " of 15 chapters" +
+    (selected === "2" ? " · Selected Second Founding successors" : "");
+  empty.hidden = visible !== 0;
+}
+
+document.querySelector("#filters").addEventListener("submit", event => event.preventDefault());
+search.addEventListener("input", render);
+founding.addEventListener("change", render);
+
+document.querySelector("#reset").addEventListener("click", () => {
+  search.value = "";
+  founding.value = "1";
+  render();
+  search.focus();
+});
+
+document.querySelector("#show-all").addEventListener("click", () => {
+  search.value = "";
+  founding.value = "all";
+  render();
+  search.focus();
+});
+
+render();
+</script>
+</body>
+</html>
